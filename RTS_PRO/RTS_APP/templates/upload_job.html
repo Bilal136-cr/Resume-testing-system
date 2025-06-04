@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Post Job{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/upload_job.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Post Job</h2>
+<form method="post" action="{% url 'upload_job' %}">
+    {% csrf_token %}
+    <div class="mb-6 flex justify-start">
+        <a href="{% url 'dashboard_jobprovider' %}" class="inline-block px-4 py-2 bg-gray-700 text-white text-sm rounded hover:bg-gray-800 transition"> ⬅️ Back to Dashboard </a>
+    </div>
+    <br><br>
+
+    <label for="title">Job Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="seats">Number of Seats:</label><br>
+    <input type="number" id="seats" name="seats" required><br><br>
+
+    <label for="description">Job Description:</label><br>
+    <textarea id="description" name="description" rows="5" required></textarea><br><br>
+
+    <h3>Scoring Criteria</h3>
+    <div id="criteria-container">
+    <div class="criteria-group">
+        <input type="text" name="keyword[]" placeholder="Keyword (e.g., Python)" required>
+        <input type="number" name="weight[]" placeholder="Weight (e.g., 5)" min="1" required>
+    </div>
+    </div>
+    <p><strong>Total Weight:</strong> <span id="total-weight">0</span> / 100</p>
+    <button type="button" onclick="addCriteria()">+ Add More Criteria</button><br><br>
+
+    <button type="submit">Post</button>
+</form>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/upload_job.js' %}"></script>
+{% endblock %}

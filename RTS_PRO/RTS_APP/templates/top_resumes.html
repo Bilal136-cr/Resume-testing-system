@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}Top Resumes{%endblock %} 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard_jobprovider.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto mt-10 px-6">
+    <div class="mb-6 flex justify-start">
+        <a href="{% url 'dashboard_jobprovider' %}" class="inline-block px-4 py-2 bg-gray-700 text-white text-sm rounded hover:bg-gray-800 transition"> ⬅️ Back to Dashboard </a>
+    </div>
+  <h2 class="text-2xl font-bold text-gray-800 mb-8">
+    Top {{ job.seats }} Resumes for "<span class="text-blue-600"
+      >{{ job.title }}</span
+    >"
+  </h2>
+
+  <!-- Grid layout: 2 cards per row -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for item in top_resumes %}
+    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+      <form
+        method="post"
+        action="{% url 'update_resume_status' item.resume.id %}"
+      >
+        {% csrf_token %}
+
+        <!-- Card content as a flex container -->
+        <div class="flex justify-between items-start">
+          <!-- Left info: user, score, feedback -->
+          <div>
+            <p class="text-gray-700 mb-1">
+              <span class="font-semibold">User:</span> {{item.resume.user.username }}
+            </p>
+            <p class="text-gray-700 mb-1">
+              <span class="font-semibold">Score:</span> {{ item.score }}
+            </p>
+            <a
+              href="{% url 'view_feedback' item.resume.id %}"
+              class="inline-block text-blue-600 hover:underline font-medium"
+            >
+              🔍 View Feedback
+            </a>
+          </div>
+
+          <!-- Right buttons: stacked vertically -->
+          <div class="flex flex-col gap-2">
+            {% if item.resume.status == 'Pending' %}
+            <button
+              type="submit"
+              name="status"
+              value="Accepted"
+              class="px-4 py-2 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition" style="width: 150px;"
+            >
+              ✅ Accept
+            </button>
+            <button
+              type="submit"
+              name="status"
+              value="Rejected"
+              class="px-4 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition" style="width: 150px;"
+            >
+              ❌ Reject
+            </button>
+            {% else %}
+            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded">
+              Status: {{ item.resume.status }}
+            </span>
+            {% endif %}
+          </div>
+        </div>
+      </form>
+    </div>
+
+    {% empty %}
+    <p class="text-gray-500 text-center col-span-2">
+      No resumes found for this job.
+    </p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

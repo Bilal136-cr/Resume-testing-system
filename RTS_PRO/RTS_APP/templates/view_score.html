@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Scores{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/view_score.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+    {% if scores %}
+        <ul>
+            {% for score in scores %}
+                <li>{{ score.resume }} - {{ score.score }} - {{ score.feedback }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No scores found.</p>
+    {% endif %}
+
+{% endblock %}

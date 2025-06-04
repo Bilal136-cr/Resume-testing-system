@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Job Seeker Dashboard{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard_jobseeker.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+
+    <div class="mb-6">
+        <a href="{% url 'view_my_resumes' %}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition">
+            📄 My Resumes
+        </a>
+    </div>
+
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">Available Jobs</h2>
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="text-left px-6 py-3 text-sm font-medium text-gray-600">Title</th>
+                    <th class="text-left px-6 py-3 text-sm font-medium text-gray-600">Description</th>
+                    <th class="text-left px-6 py-3 text-sm font-medium text-gray-600">Seats</th>
+                    <th class="text-left px-6 py-3 text-sm font-medium text-gray-600">Posted By</th>
+                    <th class="text-left px-6 py-3 text-sm font-medium text-gray-600">Action</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                {% for job in jobs %}
+                <tr>
+                    <td class="px-6 py-4 text-sm text-gray-800">{{ job.title }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{{ job.description }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{{ job.seats }}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{{ job.provider.username }}</td>
+                    <td class="px-6 py-4">
+                        <a href="{% url 'upload_resume' job.id %}" class="px-3 py-1 bg-emerald-500 text-white rounded-md text-sm hover:bg-emerald-600 transition">
+                            Upload Resume
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">No open jobs available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

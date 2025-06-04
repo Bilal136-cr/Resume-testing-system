@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Feedback{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<h2>Resume Feedback</h2>
+
+<p><strong>Job:</strong> {{ resume.job.title }}</p>
+<p><strong>Uploaded By:</strong> {{ resume.user.username }}</p>
+<p><strong>Score:</strong> {{ score.score }}</p>
+<p><strong>Feedback:</strong></p>
+<p>{{ score.feedback }}</p>
+
+<form method="get" action="{% url 'download_feedback' resume.id %}" style="display: inline;">
+    <button type="submit" style="padding: 6px 12px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        <span style="margin-right: 6px;">⬇️</span> Download Feedback (PDF)
+    </button>
+</form>
+
+<!-- Back Button -->
+{% if is_job_provider %}
+    <a href="{% url 'dashboard_jobprovider' %}">⬅ Back to Dashboard</a>
+{% else %}
+    <a href="{% url 'view_my_resumes' %}">⬅ Back to My Resumes</a>
+{% endif %}
+
+
+{% endblock %}

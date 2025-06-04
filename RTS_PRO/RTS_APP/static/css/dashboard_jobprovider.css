@@ -1,0 +1,112 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #00b4db, #0083b0);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  .navbar {
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .navbar h1 {
+    color: #0083b0;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+
+  .logout-btn {
+    background-color: #0083b0;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .logout-btn:hover {
+    background-color: #006994;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  .container h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 28px;
+  }
+
+  .section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+
+  .section h3 {
+    color: #0083b0;
+    margin-bottom: 20px;
+  }
+
+  input, textarea, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #0083b0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #006994;
+  }
+
+  .resume-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .resume-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+  }
+
+  .resume-item span {
+    font-weight: bold;
+    color: #006994;
+  }
+
+  main{
+    width: 100% !important;
+  }
+  .text-right {
+    text-align: center !important;
+  }
+  .btn_same{
+    font-size: 12px !important;
+    width: 132px !important;
+  }

@@ -1,0 +1,27 @@
+      /* Custom styles for the circular progress bar */
+      .circular-progress {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: conic-gradient(#22c55e 92%, #e2e8f0 92%); /* 92% filled */
+      }
+
+      .circular-progress::before {
+        content: "";
+        position: absolute;
+        width: 90px; /* Inner circle size */
+        height: 90px;
+        background-color: white;
+        border-radius: 50%;
+      }
+
+      .progress-value {
+        position: relative;
+        font-size: 1.75rem; /* 28px */
+        font-weight: 600; /* Semi-bold */
+        color: #1f2937; /* Dark text */
+      }

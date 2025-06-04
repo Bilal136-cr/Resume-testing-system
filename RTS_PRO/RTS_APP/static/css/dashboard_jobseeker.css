@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    min-height: 100vh;
+    color: #333;
+  }
+
+  .navbar {
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .navbar h1 {
+    color: #6a11cb;
+    font-size: 24px;
+  }
+
+  .navbar .logout-btn {
+    background-color: #6a11cb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .navbar .logout-btn:hover {
+    background-color: #5a00b0;
+  }
+
+  .dashboard {
+    padding: 40px;
+  }
+
+  .dashboard h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 28px;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .card h3 {
+    color: #6a11cb;
+    margin-bottom: 15px;
+  }
+
+  .card p {
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .upload-section {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+
+  .upload-section h3 {
+    color: #6a11cb;
+    margin-bottom: 20px;
+  }
+
+  .upload-section input,
+  .upload-section select,
+  .upload-section button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  .upload-section button {
+    background: #6a11cb;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .upload-section button:hover {
+    background: #5a00b0;
+  }
+
+
+  main{
+    width: 100% !important;
+  }
